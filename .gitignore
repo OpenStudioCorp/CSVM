@@ -6,8 +6,7 @@ obj/
 *.so
 *.cache
 
-*.exe
-*.bin
+
 __pycache__
 *.so
 
