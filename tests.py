@@ -1,9 +1,8 @@
 import unittest
 from transpiler import  transpile, Runproject, Compilee, Compileprojectwithoutput,Compileproject
 from templates import create_project,CreateDll
-from csvm import *
 import argparse
-from errors import *
+from erotrs import *
 
 class TestTranspiler(unittest.TestCase):
     def test_transpile(self):
