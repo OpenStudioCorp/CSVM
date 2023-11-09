@@ -474,7 +474,7 @@ def Compileproject():
             Compilee(file_name)
 
            
-            subprocess.run(["dotnet", 'build'], shell=True)
+            subprocess.run(["dotnet build"], shell=True)
       
 
             # Remove the .cs file * not available within --compout
