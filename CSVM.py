@@ -168,20 +168,25 @@ if args.t:
 
 
 def main():
-    
-    CheckCSVM()
-    CheckHomedll()
+    try:
+        CheckCSVM()
+        CheckHomedll()
+    except Exception as e:
+        print_info(f"Error checking for updates: {e}")
+        print_info("are you connected to the internet?")
     HomeDLLLocation()
-    
     # use checkhomedll to check if the home.dll is in the folder
     if HomeDLLLocation() == False:
         print_error("home.dll not found! Would you like to download it? (y/n)")
         download = input(">>> ")
         if download == "y":
             print("Downloading...")
-            link = "https://Github.com/charlie-sans/CSVM/raw/main/home.dll"
-            download_file(link, ".")
-            print_success("Downloaded!")
+            try:
+                link = "https://Github.com/charlie-sans/CSVM/raw/main/home.dll"
+                download_file(link, ".")
+                print_success("Downloaded!")
+            except Exception as e:
+                print_error(f"Error downloading file: {e}")
         elif download == "n":
             print("Exiting...")
             exit()

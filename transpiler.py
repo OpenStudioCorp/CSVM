@@ -159,7 +159,16 @@ translation_dict = {
     'at': ('case')
 
 }
-def transpile(event): # this is for transpiling
+def transpile(event):
+    """
+    Transpiles the given event text using a translation dictionary.
+
+    Args:
+    event (str): The text to be transpiled.
+
+    Returns:
+    str: The transpiled text.
+    """
     lines = event.splitlines()
 
     translated_lines = []
@@ -199,21 +208,34 @@ def createoutput(translated_text): # this is for creating files
     with open(file_path, 'w') as file:
         file.write(translated_text)
 
-def Compilee(file_name): # this is for compiling a single file
+def Compilee(file_name): # this is for compiling a file from a list
     file_path = file_name + ".cs"
+    
     file_name = file_name + ".cusp"
+    
     print(f"Compiling file '{file_name}'...")
+    
     print(f"Transpiling file {file_path}")
-    with open(file_name, 'r') as file:
-        event = file.read()
-    translated_text = transpile(event)
-    with open(file_path, 'w') as file:
-        file.write(translated_text)
+    
+    try:
+        with open(file_name, 'r') as file:
+            event = file.read()
+        
+        translated_text = transpile(event)
+        
+        with open(file_path, 'w') as file:
+            file.write(translated_text)
+        
+        print(f"File written to: {file_path}")
+    except Exception as e:
+        print(f"Error writing to file: {e}")
+        
     print("Compiling...")
   
- 
 
-def Compileprojectwithoutput():
+
+
+def Compileproject():
     # Read the project file
     try:
         with open("Project.cspm", 'r') as file:
@@ -235,7 +257,7 @@ def Compileprojectwithoutput():
             csproj_file_name = os.path.basename(csproj_files[0])
             print(f".csproj file found: {csproj_file_name}")
         else:
-            print_warning("No .csproj file found in the current directory.")
+            print_error("No .csproj file found in the current directory.")
             exit()
     except Exception as e:
         print_error(f"Error finding .csproj file: {e}")
@@ -250,71 +272,23 @@ def Compileprojectwithoutput():
             # Open the file
             Compilee(file_name)
 
-            # Check if the OS is Windows or not
-            if os.name == "nt":
-                # If it is, use dotnet.exe
-                subprocess.run(["c:/Program Files/dotnet/dotnet.exe", 'build'], shell=True)
-            else:
-                # If it is not, use dotnet
-                subprocess.Popen(['/usr/local/share/dotnet/dotnet', 'build'], shell=True)
+           
+            subprocess.run(["dotnet", 'build'], shell=True)
+      
 
             # Remove the .cs file * not available within --compout
-            # os.remove(file_name + ".cs")
 
     except Exception as e:
         print_error(f"Error compiling file '{file_name}': {e}")
         
+    #os.remove(file_name + ".cs")
 
-
-def Compileproject(): # this is used for compiling a full project full of files that people would want to use
-    #read the project file
-    try:
-        with open("Project.cspm", 'r') as file:
-            filedata = file.readlines()  # readlines instead of read
-    except Exception as e:
-        print_error(f"Error reading project file: {e}")
-        exit()
-# each line is a file with a .cusp extension
-# we need to transpile each one of them into a .cs file
-
-    try:
-        #get the name of the .csproj file within the same directory
-       
-
-        # get the current directory
-        current_directory = os.getcwd()
-
-        # find .csproj files in the current directory
-        csproj_files = glob.glob(os.path.join(current_directory, "*.csproj"))
-
-        # get the first .csproj file name
-        if csproj_files:
-            csproj_file_name = os.path.basename(csproj_files[0])
-            print(f".csproj file found: {csproj_file_name}")
-        else:
-            print_error("No .csproj file found in the current directory.")
-            exit()
-    except Exception as e:
-        print_error(f"Error finding .csproj file: {e}")
-        exit()
-
-    try:
-        for line in filedata:
-            # get the file name
-            file_name = line.strip()  # remove newline characters
-            print(f"Compiling file '{file_name}'...")
-    except Exception as e:
-        print_error(f"Error reading project file: {e}")
-        exit()
-    try:
-        # open the file
-        Compilee(file_name)
+def Compileprojectwithoutput():
+   pass
         
-        #check if the os is windows or not
-        
-    except Exception as e:
-        print_error(f"Error compiling file '{file_name}': {e}")
-        
+
+
+
 
 def Runproject(name):
     #read the project file
@@ -334,6 +308,6 @@ def Runproject(name):
         # create the output file
         createoutput(translated_text)
         
-        subprocess.run(["dotnet run"])
+    subprocess.run(["dotnet run"])
         
         
