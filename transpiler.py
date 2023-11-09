@@ -13,7 +13,118 @@ import os
 import glob
 import subprocess
 
+#######################
+# Tokens
+#######################
+class TokenType:
+    # Keywords
+    CLASS = 'CLASS'
+    PUBLIC = 'PUBLIC'
+    PRIVATE = 'PRIVATE'
+    STATIC = 'STATIC'
+    VOID = 'VOID'
+    IF = 'IF'
+    ELSE = 'ELSE'
+    FOR = 'FOR'
+    WHILE = 'WHILE'
+    RETURN = 'RETURN'
+    INT = 'INT'
+    STRING = 'STRING'
+    BOOL = 'BOOL'
+    TRUE = 'TRUE'
+    FALSE = 'FALSE'
+    NULL = 'NULL'
 
+    # Operators
+    PLUS = 'PLUS'
+    MINUS = 'MINUS'
+    MULTIPLY = 'MULTIPLY'
+    DIVIDE = 'DIVIDE'
+    MODULO = 'MODULO'
+    EQUALS = 'EQUALS'
+    NOT_EQUALS = 'NOT_EQUALS'
+    LESS_THAN = 'LESS_THAN'
+    GREATER_THAN = 'GREATER_THAN'
+    LESS_THAN_EQUALS = 'LESS_THAN_EQUALS'
+    GREATER_THAN_EQUALS = 'GREATER_THAN_EQUALS'
+    ASSIGNMENT = 'ASSIGNMENT'
+    INCREMENT = 'INCREMENT'
+    DECREMENT = 'DECREMENT'
+
+    # Delimiters
+    LEFT_PARENTHESIS = 'LEFT_PARENTHESIS'
+    RIGHT_PARENTHESIS = 'RIGHT_PARENTHESIS'
+    LEFT_BRACE = 'LEFT_BRACE'
+    RIGHT_BRACE = 'RIGHT_BRACE'
+    LEFT_BRACKET = 'LEFT_BRACKET'
+    RIGHT_BRACKET = "RIGHT_BRACKET"
+    SEMICOLON = 'SEMICOLON'
+    COMMA = 'COMMA'
+
+    # Literals
+    IDENTIFIER = 'IDENTIFIER'
+    INTEGER_LITERAL = 'INTEGER_LITERAL'
+    STRING_LITERAL = 'STRING_LITERAL'
+
+    # End of file
+    EOF = 'EOF'
+
+
+class Token:
+    def __init__(self, type_, value):
+        self.type = type_
+        self.value = value
+    
+    def __repr__(self): 
+        if self.value: return f'{self.type}:{self.value}'
+        return f'{self.type}'
+class Lexer:
+    def __init__(self, text):
+        self.text = text
+        self.pos = -1
+        self.current_char = None
+    
+    def advance(self):
+        self.pos += 1
+        self.current_char = self.text[self.pos] if self.pos < len(self.text) else None
+    
+    def make_tokens(self):
+        tokens = []
+        while self.current_char != None:
+            if self.current_char in '\t':
+                self.advance()
+            elif self.current_char == '{':
+                tokens.append(Token(TokenType.RIGHT_BRACKET))
+            elif self.current_char == '}':
+                tokens.append(Token(TokenType.LEFT_BRACKET))
+            elif self.current_char == '{':
+                tokens.append(Token(TokenType.RIGHT_BRACKET))
+            elif self.current_char == '{':
+                tokens.append(Token(TokenType.RIGHT_BRACKET))
+            elif self.current_char == '{':
+                tokens.append(Token(TokenType.RIGHT_BRACKET))
+            elif self.current_char == '{':
+                tokens.append(Token(TokenType.RIGHT_BRACKET))
+            elif self.current_char == '{':
+                tokens.append(Token(TokenType.RIGHT_BRACKET))
+            elif self.current_char == '{':
+                tokens.append(Token(TokenType.RIGHT_BRACKET))
+            elif self.current_char == '{':
+                tokens.append(Token(TokenType.RIGHT_BRACKET))
+            elif self.current_char == '{':
+                tokens.append(Token(TokenType.RIGHT_BRACKET))
+            elif self.current_char == '{':
+                tokens.append(Token(TokenType.RIGHT_BRACKET))
+            elif self.current_char == '{':
+                tokens.append(Token(TokenType.RIGHT_BRACKET))
+            elif self.current_char == '{':
+                tokens.append(Token(TokenType.RIGHT_BRACKET))
+            elif self.current_char == '{':
+                tokens.append(Token(TokenType.RIGHT_BRACKET))
+            elif self.current_char == '{':
+                tokens.append(Token(TokenType.RIGHT_BRACKET))
+            
+        return tokens
 
 translation_dict = {
     'struct': ('static void'),
@@ -100,8 +211,7 @@ def Compilee(file_name): # this is for compiling a single file
         file.write(translated_text)
     print("Compiling...")
   
-    
-        
+ 
 
 def Compileprojectwithoutput():
     # Read the project file

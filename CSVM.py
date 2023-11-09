@@ -35,10 +35,19 @@ from colorama import Fore, Style
 
 
 __name__ = "CVSM"
-__version__ = "1.2.1"
+__version__ = "1.2.2"
 __dllversion__ = "1.0.0"
 
 ##important stuff##
+
+def download_file(link, directory):
+    response = requests.get(link, stream=True)
+    file_name = os.path.join(directory, link.split("/")[-1])
+
+    with open(file_name, 'wb') as file:
+        for chunk in response.iter_content(chunk_size=1024): 
+            if chunk:
+                file.write(chunk)
 
 def get_version(name):
     version = requests.get("https://raw.githubusercontent.com/OpenStudioCorp/NewOpenStudioCorpSite/main/OpenStudioCorpProjects.json")
@@ -49,7 +58,7 @@ def get_version(name):
         if item['Name'] == name:
             return item['Version']
 
-def homedlllocation():
+def HomeDLLLocation():
     #check if the home dll is witiin the folder and if not return false
     
     if os.path.isfile("home.dll"):
@@ -162,12 +171,21 @@ def main():
     
     CheckCSVM()
     CheckHomedll()
-    homedlllocation()
+    HomeDLLLocation()
     
     # use checkhomedll to check if the home.dll is in the folder
-    if checkhomedll() == False:
-        print_error("home.dll not found! Please download it from the website")
-        webbrowser.open_new_tab("https://cubescript.vercel.app/Download")
+    if HomeDLLLocation() == False:
+        print_error("home.dll not found! Would you like to download it? (y/n)")
+        download = input(">>> ")
+        if download == "y":
+            print("Downloading...")
+            link = "https://Github.com/charlie-sans/CSVM/raw/main/home.dll"
+            download_file(link, ".")
+            print_success("Downloaded!")
+        elif download == "n":
+            print("Exiting...")
+            exit()
+            download_file("https://github.com/charlie-sans/CSVM/raw/main/home.dll", ".")
         exit()
 
     
