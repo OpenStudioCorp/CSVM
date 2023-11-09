@@ -42,7 +42,7 @@ parser.add_argument('-t', action='store_true', help='Open the terminal')
 parser.add_argument('-r', action='store_true', help='Run the program')
 parser.add_argument('-compile', action='store_true', help='Compile the program')
 parser.add_argument('-f', action='store_true', help='Force compile the program? why?')
-
+parser.add_argument('-input_file', type=str, help='Input file')
 parser.add_argument('-compout', action='store_true', help='Compile the program with output')
 parser.add_argument('-ve', action='store_true', help='Version of CSVM')
 
