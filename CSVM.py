@@ -220,7 +220,7 @@ def main():
     
     # use checkhomedll to check if the home.dll is in the folder
     
-    if CheckFile('Home.dll') == False:
+    if CheckFile('home.dll') == False:
         
         print_error("home.dll not found! Would you like to download it? (y/n)")
         

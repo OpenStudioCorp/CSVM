@@ -4,7 +4,7 @@
                       <!-- .cs files -->
              
                   <Reference Include="System" />
-                  <Reference Include="Home.dll" />
+                  <Reference Include="home.dll" />
                 </ItemGroup>
 
                 <PropertyGroup>

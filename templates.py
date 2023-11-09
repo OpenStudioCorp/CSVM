@@ -202,7 +202,7 @@ def CreateDll(name):
             <ItemGroup>
               <!-- .cs files -->
 
-          <Reference Include="Home.dll" />
+          <Reference Include="home.dll" />
         </ItemGroup>
 
   <PropertyGroup>
@@ -250,7 +250,7 @@ def create_project(name):
                       <!-- .cs files -->
              
                   <Reference Include="System" />
-                  <Reference Include="Home.dll" />
+                  <Reference Include="home.dll" />
                 </ItemGroup>
 
                 <PropertyGroup>
