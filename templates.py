@@ -10,9 +10,30 @@ import json
 import requests
 import urllib.request
 import urllib.parse
-
+from colorama import *
 from versions import *
 
+def print_error(text):
+    """ Print a text in red
+    """
+    print(f"\033[1;31m{text}\033[0;0m")
+
+def print_success(text):
+    """ Print a text in green
+    """
+    print(f"\033[1;32m{text}\033[0;0m")
+    
+def print_info(text):
+    """ Print a text in blue
+    """
+    print(f"\033[1;34m{text}\033[0;0m")
+    
+def print_link(text, link):
+    """ Print a text in blue
+    """
+    print(f"\033[1;34m{text}\033[0;0m")
+    print(f"\033[1;34m{link}\033[0;0m")
+    
 
 ...
 

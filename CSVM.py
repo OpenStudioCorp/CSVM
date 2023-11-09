@@ -143,25 +143,25 @@ def LinuxMain():
             
             Compileproject()
             
+            time.sleep(1)
             with open("Project.cspm", 'r') as file:
                 
                 filedata = file.readlines()
                 
-            if os.name == "nt":
+            
                 
             # if it is, use dotnet.exe
             
-                subprocess.run(["dotnet", 'build'])
+            subprocess.run(['dotnet build'])
                 
             # remove the .cs file
-            
             for line in filedata:
                 
                 # get the file name
                 
                 file_name = line.strip()
                 
-                os.remove(file_name + ".cs")
+                #os.remove(file_name + ".cs")
                 
             exit()
             
@@ -280,17 +280,13 @@ def main():
                 
                 filedata = file.readlines()
                 
-            if os.name == "nt":
+        
                 
             # if it is, use dotnet.exe
             
-                subprocess.run(["c:/Program Files/dotnet/dotnet.exe", 'build'])
+            subprocess.run(['dotnet build'])
                 
-            else:
-                
-            # if it is not, use dotnet
             
-                subprocess.Popen(['/usr/bin/dotnet', 'build'])
                 
             # remove the .cs file
             
