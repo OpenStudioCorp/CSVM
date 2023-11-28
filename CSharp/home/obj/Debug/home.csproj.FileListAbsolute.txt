@@ -1,0 +1,6 @@
+C:\Users\GAMER\source\repos\home\obj\Debug\home.csproj.AssemblyReference.cache
+C:\Users\GAMER\source\repos\home\obj\Debug\home.csproj.CoreCompileInputs.cache
+C:\Users\GAMER\source\repos\home\bin\Debug\home.dll
+C:\Users\GAMER\source\repos\home\bin\Debug\home.pdb
+C:\Users\GAMER\source\repos\home\obj\Debug\home.dll
+C:\Users\GAMER\source\repos\home\obj\Debug\home.pdb

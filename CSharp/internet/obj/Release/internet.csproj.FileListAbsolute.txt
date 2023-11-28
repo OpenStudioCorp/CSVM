@@ -1,0 +1,6 @@
+C:\Users\GAMER\source\repos\internet\bin\Release\internet.dll
+C:\Users\GAMER\source\repos\internet\bin\Release\internet.pdb
+C:\Users\GAMER\source\repos\internet\obj\Release\internet.csproj.AssemblyReference.cache
+C:\Users\GAMER\source\repos\internet\obj\Release\internet.csproj.CoreCompileInputs.cache
+C:\Users\GAMER\source\repos\internet\obj\Release\internet.dll
+C:\Users\GAMER\source\repos\internet\obj\Release\internet.pdb

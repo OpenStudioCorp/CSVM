@@ -1,0 +1,6 @@
+C:\Users\GAMER\source\repos\home\obj\Release\home.csproj.AssemblyReference.cache
+C:\Users\GAMER\source\repos\home\obj\Release\home.csproj.CoreCompileInputs.cache
+C:\Users\GAMER\source\repos\home\bin\Release\home.dll
+C:\Users\GAMER\source\repos\home\bin\Release\home.pdb
+C:\Users\GAMER\source\repos\home\obj\Release\home.dll
+C:\Users\GAMER\source\repos\home\obj\Release\home.pdb
